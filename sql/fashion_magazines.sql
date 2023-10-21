@@ -9,7 +9,7 @@
 -- o.order_status = 'unpaid'
 
 
-select 
+SELECT 
     c.customer_name as "Customer",
     (PRINTF("$%.2f", SUM((s.subscription_length * s.price_per_month)))) as "Amount Due"
 from orders o
@@ -18,4 +18,4 @@ INNER join customers c
 INNER join subscriptions s
     on (o.subscription_id = s.subscription_id)
 where o.order_status = 'unpaid' and s.description = 'Fashion Magazine'
-group by c.customer_id
+group by c.customer_name
